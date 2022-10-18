@@ -2,9 +2,11 @@ package be.abis.exercise.test;
 
 import be.abis.exercise.model.Address;
 import be.abis.exercise.model.Company;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+// import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
+// import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CompanyTest {
 
@@ -13,7 +15,7 @@ public class CompanyTest {
 
     @Test
     public void taxForBelgianCompaniesShouldBe51(){
-        assertEquals(51.0, company.calculateTaxToPay());
+        assert(51.0 == company.calculateTaxToPay());
     }
 
 

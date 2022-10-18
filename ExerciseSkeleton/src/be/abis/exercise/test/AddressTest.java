@@ -1,13 +1,16 @@
 package be.abis.exercise.test;
 
 import be.abis.exercise.model.Address;
-import org.junit.jupiter.api.*;
+import org.junit.Test;
+// import org.junit.jupiter.api.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertTrue;
+
+// import static org.junit.jupiter.api.Assertions.*;
 
 public class AddressTest {
 

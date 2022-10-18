@@ -2,26 +2,27 @@ package be.abis.exercise.test;
 
 import be.abis.exercise.exception.PersonShouldBeAdultException;
 import be.abis.exercise.exception.SalaryTooLowException;
-import be.abis.exercise.model.Address;
 import be.abis.exercise.model.Company;
 import be.abis.exercise.model.Person;
 
-import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.Test;
+import org.junit.*;
+// import org.junit.jupiter.api.*;
+// import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.startsWith;
+// import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.startsWithIgnoringCase;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+// import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import java.time.LocalDate;
-import java.util.List;
 
-@ExtendWith(MockitoExtension.class)
+// @ExtendWith(MockitoExtension.class)
 
 public class PersonTest {
 
@@ -32,8 +33,8 @@ public class PersonTest {
     Person person2;
 
 
-    @BeforeEach
-    void setUp(){
+    @Before
+    public void setUp(){
         person1 = new Person(1, "Jef", "Dhont", LocalDate.parse("1980-10-01"));
         person1.setGrossSalary(2000.0);
 
@@ -56,7 +57,7 @@ public class PersonTest {
     }
 
     @Test
-    @Order(2)
+ //   @Order(2)
     public void toStringSentenceStartsWithPerson(){
         System.out.println("Test 2");
         assertTrue(person1.toString().startsWith("Person"));
@@ -68,15 +69,16 @@ public class PersonTest {
         assertThat(string, startsWithIgnoringCase("person"));
     }
 
-    @Test
-    @Order(1)
-    public void shouldThrowPersonShouldBeAdultException(){
+    @Test (expected = PersonShouldBeAdultException.class)
+  //  @Order(1)
+    public void shouldThrowPersonShouldBeAdultException() throws PersonShouldBeAdultException {
         System.out.println("Test 1");
-        assertThrows(PersonShouldBeAdultException.class, () -> person2.calculateAge());
+        person2.calculateAge();
+//        assertThrows(PersonShouldBeAdultException.class, () -> person2.calculateAge());
     }
 
 
-
+/*
     @Test
     public void calculateNetSalaryOfBelgianPersonUsingMockCompany() throws SalaryTooLowException {
         when(mockCompany.calculateTaxToPay()).thenReturn(51.0);
@@ -89,13 +91,14 @@ public class PersonTest {
     @Mock
     private Person mockPerson;
 
-    @Test
-    public void shouldThrowSalaryTooLowException() {
+    @Test (expected = SalaryTooLowException.class)
+    public void shouldThrowSalaryTooLowException() throws SalaryTooLowException {
         when(mockCompany.calculateTaxToPay()).thenReturn(51.0);
         person1.setCompany(mockCompany);
-        assertThrows(SalaryTooLowException.class, () -> person1.calculateNetSalary());
+        person1.calculateNetSalary();
+ //       assertThrows(SalaryTooLowException.class, () -> person1.calculateNetSalary());
     }
-
+*/
 
 
 
